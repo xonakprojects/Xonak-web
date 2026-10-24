@@ -1,0 +1,309 @@
+<!DOCTYPE html>
+<html lang="es" class="scroll-smooth">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>XONAK | Tecnología, Seguridad e Infraestructura Integral</title>
+    <!-- Tailwind CSS CDN -->
+    <script src="https://cdn.tailwindcss.com"></script>
+    <!-- FontAwesome para iconos -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <script>
+        tailwind.config = {
+            theme: {
+                extend: {
+                    colors: {
+                        primary: '#eab308', // Amarillo principal
+                        primaryHover: '#ca8a04',
+                        darkBg: '#09090b', // Negro moderno
+                        cardBg: '#18181b'  // Gris oscuro / Zinc 900
+                    }
+                }
+            }
+        }
+    </script>
+</head>
+<body class="bg-darkBg text-slate-100 font-sans antialiased selection:bg-primary selection:text-zinc-950">
+
+    <!-- HEADER / NAVEGACIÓN -->
+    <header class="fixed top-0 left-0 w-full z-50 bg-darkBg/90 backdrop-blur-md border-b border-zinc-800">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 h-20 flex items-center justify-between">
+            <div class="flex items-center space-x-3">
+                <div class="bg-primary/10 p-2.5 rounded-lg border border-primary/30">
+                    <i class="fa-solid fa-shield-halved text-primary text-xl"></i>
+                </div>
+                <span class="text-2xl font-black tracking-wider text-white">XO<span class="text-primary">NAK</span></span>
+            </div>
+            
+            <!-- Menú Escritorio -->
+            <nav class="hidden md:flex items-center space-x-8 text-sm font-medium text-slate-300">
+                <a href="#inicio" class="hover:text-primary transition-colors">Inicio</a>
+                <a href="#servicios" class="hover:text-primary transition-colors">Servicios</a>
+                <a href="#nosotros" class="hover:text-primary transition-colors">Nosotros</a>
+                <a href="#contacto" class="bg-primary hover:bg-primaryHover text-zinc-950 px-5 py-2.5 rounded-lg font-bold transition-all shadow-lg shadow-primary/20">Contacto</a>
+            </nav>
+
+            <!-- Botón Menú Móvil -->
+            <button id="menu-btn" class="md:hidden text-slate-300 hover:text-white focus:outline-none">
+                <i class="fa-solid fa-bars text-2xl"></i>
+            </button>
+        </div>
+
+        <!-- Menú Desplegable Móvil -->
+        <div id="mobile-menu" class="hidden md:hidden bg-cardBg border-b border-zinc-800 px-4 pt-2 pb-6 space-y-3">
+            <a href="#inicio" class="block text-slate-300 hover:text-primary py-2">Inicio</a>
+            <a href="#servicios" class="block text-slate-300 hover:text-primary py-2">Servicios</a>
+            <a href="#nosotros" class="block text-slate-300 hover:text-primary py-2">Nosotros</a>
+            <a href="#contacto" class="block text-center bg-primary text-zinc-950 py-2.5 rounded-lg font-bold">Contacto</a>
+        </div>
+    </header>
+
+    <!-- HERO SECTION -->
+    <section id="inicio" class="pt-32 pb-20 md:pt-44 md:pb-32 relative overflow-hidden">
+        <div class="absolute inset-0 bg-[radial-gradient(ellipse_80%_80%_at_50%_-20%,rgba(234,179,8,0.15),rgba(255,255,255,0))]"></div>
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10 text-center">
+            <div class="inline-flex items-center gap-2 px-4 py-2 rounded-full bg-zinc-900 border border-zinc-800 text-primary text-xs font-bold uppercase tracking-widest mb-6 shadow-md">
+                <i class="fa-solid fa-circle-check"></i> Seguridad Electrónica & Infraestructura Profesional
+            </div>
+            <h1 class="text-4xl sm:text-6xl font-extrabold text-white tracking-tight max-w-4xl mx-auto leading-tight mb-6">
+                Protección, Automatización y Conectividad Avanzada
+            </h1>
+            <p class="text-lg sm:text-xl text-slate-400 max-w-2xl mx-auto mb-10">
+                Soluciones de alta gama en monitoreo vehicular, videovigilancia con IA, extinción de incendios y redes estructuradas para empresas y hogares.
+            </p>
+            <div class="flex flex-col sm:flex-row justify-center gap-4">
+                <a href="#servicios" class="bg-primary hover:bg-primaryHover text-zinc-950 font-bold px-8 py-4 rounded-xl transition-all shadow-xl shadow-primary/20">
+                    Ver Servicios
+                </a>
+                <a href="#contacto" class="bg-zinc-900 hover:bg-zinc-800 border border-zinc-800 text-white font-semibold px-8 py-4 rounded-xl transition-all">
+                    Cotizar Proyecto
+                </a>
+            </div>
+        </div>
+    </section>
+
+    <!-- SECCIÓN DE SERVICIOS -->
+    <section id="servicios" class="py-20 bg-zinc-950/60">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="text-center max-w-3xl mx-auto mb-16">
+                <h2 class="text-primary text-sm font-bold uppercase tracking-widest mb-3">Nuestras Capacidades</h2>
+                <p class="text-3xl sm:text-4xl font-bold text-white">Servicios especializados para tu tranquilidad y operación</p>
+            </div>
+
+            <!-- Grid de Servicios (8 elementos) -->
+            <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6">
+                
+                <!-- 1. GPS Vehicular -->
+                <div class="bg-cardBg p-6 rounded-2xl border border-zinc-800 hover:border-primary/60 transition-all group shadow-lg">
+                    <div class="w-12 h-12 rounded-xl bg-primary/10 flex items-center justify-center text-primary text-xl mb-5 group-hover:bg-primary group-hover:text-zinc-950 transition-all">
+                        <i class="fa-solid fa-location-crosshairs"></i>
+                    </div>
+                    <h3 class="text-lg font-bold text-white mb-2">GPS Vehicular</h3>
+                    <p class="text-sm text-slate-400 leading-relaxed">Localización satelital en tiempo real, control de flotas, apagado remoto y alertas de velocidad.</p>
+                </div>
+
+                <!-- 2. Videovigilancia -->
+                <div class="bg-cardBg p-6 rounded-2xl border border-zinc-800 hover:border-primary/60 transition-all group shadow-lg">
+                    <div class="w-12 h-12 rounded-xl bg-primary/10 flex items-center justify-center text-primary text-xl mb-5 group-hover:bg-primary group-hover:text-zinc-950 transition-all">
+                        <i class="fa-solid fa-video"></i>
+                    </div>
+                    <h3 class="text-lg font-bold text-white mb-2">Videovigilancia</h3>
+                    <p class="text-sm text-slate-400 leading-relaxed">Sistemas de circuito cerrado (CCTV) con analítica de video avanzada e inteligencia artificial.</p>
+                </div>
+
+                <!-- 3. Detección de Intrusos -->
+                <div class="bg-cardBg p-6 rounded-2xl border border-zinc-800 hover:border-primary/60 transition-all group shadow-lg">
+                    <div class="w-12 h-12 rounded-xl bg-primary/10 flex items-center justify-center text-primary text-xl mb-5 group-hover:bg-primary group-hover:text-zinc-950 transition-all">
+                        <i class="fa-solid fa-user-secret"></i>
+                    </div>
+                    <h3 class="text-lg font-bold text-white mb-2">Detección de Intrusos</h3>
+                    <p class="text-sm text-slate-400 leading-relaxed">Sistemas de alarma anti-intrusión de alta fiabilidad con sensores de movimiento y apertura.</p>
+                </div>
+
+                <!-- 4. Detección de Incendios -->
+                <div class="bg-cardBg p-6 rounded-2xl border border-zinc-800 hover:border-primary/60 transition-all group shadow-lg">
+                    <div class="w-12 h-12 rounded-xl bg-primary/10 flex items-center justify-center text-primary text-xl mb-5 group-hover:bg-primary group-hover:text-zinc-950 transition-all">
+                        <i class="fa-solid fa-fire-flame-curved"></i>
+                    </div>
+                    <h3 class="text-lg font-bold text-white mb-2">Detección de Incendios</h3>
+                    <p class="text-sm text-slate-400 leading-relaxed">Paneles inteligentes, detectores de humo y calor convencionales y direccionados.</p>
+                </div>
+
+                <!-- 5. Extinción por Agentes Químicos -->
+                <div class="bg-cardBg p-6 rounded-2xl border border-zinc-800 hover:border-primary/60 transition-all group shadow-lg">
+                    <div class="w-12 h-12 rounded-xl bg-primary/10 flex items-center justify-center text-primary text-xl mb-5 group-hover:bg-primary group-hover:text-zinc-950 transition-all">
+                        <i class="fa-solid fa-fire-extinguisher"></i>
+                    </div>
+                    <h3 class="text-lg font-bold text-white mb-2">Extinción por Agentes Químicos</h3>
+                    <p class="text-sm text-slate-400 leading-relaxed">Sistemas automáticos de supresión de fuego para áreas críticas como centros de datos y salas eléctricas.</p>
+                </div>
+
+                <!-- 6. Detección Perimetral -->
+                <div class="bg-cardBg p-6 rounded-2xl border border-zinc-800 hover:border-primary/60 transition-all group shadow-lg">
+                    <div class="w-12 h-12 rounded-xl bg-primary/10 flex items-center justify-center text-primary text-xl mb-5 group-hover:bg-primary group-hover:text-zinc-950 transition-all">
+                        <i class="fa-solid fa-fence"></i>
+                    </div>
+                    <h3 class="text-lg font-bold text-white mb-2">Detección Perimetral</h3>
+                    <p class="text-sm text-slate-400 leading-relaxed">Barreras infrarrojas, cercos eléctricos y microondas para asegurar los límites exteriores.</p>
+                </div>
+
+                <!-- 7. Automatización de Ambientes Inteligentes -->
+                <div class="bg-cardBg p-6 rounded-2xl border border-zinc-800 hover:border-primary/60 transition-all group shadow-lg">
+                    <div class="w-12 h-12 rounded-xl bg-primary/10 flex items-center justify-center text-primary text-xl mb-5 group-hover:bg-primary group-hover:text-zinc-950 transition-all">
+                        <i class="fa-solid fa-house-laptop"></i>
+                    </div>
+                    <h3 class="text-lg font-bold text-white mb-2">Ambientes Inteligentes</h3>
+                    <p class="text-sm text-slate-400 leading-relaxed">Domótica y automatización de iluminación, climatización, accesos y escenarios personalizados.</p>
+                </div>
+
+                <!-- 8. Cableado Estructurado y Redes -->
+                <div class="bg-cardBg p-6 rounded-2xl border border-zinc-800 hover:border-primary/60 transition-all group shadow-lg">
+                    <div class="w-12 h-12 rounded-xl bg-primary/10 flex items-center justify-center text-primary text-xl mb-5 group-hover:bg-primary group-hover:text-zinc-950 transition-all">
+                        <i class="fa-solid fa-network-wired"></i>
+                    </div>
+                    <h3 class="text-lg font-bold text-white mb-2">Cableado Estructurado y Redes</h3>
+                    <p class="text-sm text-slate-400 leading-relaxed">Diseño e instalación de redes de datos UTP/Fibra óptica, certificación y gabinetes.</p>
+                </div>
+
+            </div>
+        </div>
+    </section>
+
+    <!-- SECCIÓN NOSOTROS -->
+    <section id="nosotros" class="py-20">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 grid grid-cols-1 lg:grid-cols-2 gap-12 items-center">
+            <div>
+                <h2 class="text-primary text-sm font-bold uppercase tracking-widest mb-3">Compromiso y Experiencia</h2>
+                <p class="text-3xl font-bold text-white mb-6">Tecnología de punta para blindar tu entorno físico y digital</p>
+                <p class="text-slate-400 mb-6 leading-relaxed">
+                    Contamos con un equipo de ingenieros y técnicos certificados dedicados a integrar sistemas complejos con la más alta calidad del mercado. Garantizamos estabilidad, eficiencia y soporte técnico post-venta.
+                </p>
+                <div class="grid grid-cols-2 gap-6">
+                    <div class="bg-cardBg p-4 rounded-xl border border-zinc-800">
+                        <span class="block text-3xl font-extrabold text-primary mb-1">+500</span>
+                        <span class="text-sm text-slate-400">Proyectos exitosos</span>
+                    </div>
+                    <div class="bg-cardBg p-4 rounded-xl border border-zinc-800">
+                        <span class="block text-3xl font-extrabold text-primary mb-1">24/7</span>
+                        <span class="text-sm text-slate-400">Monitoreo y soporte</span>
+                    </div>
+                </div>
+            </div>
+            <div class="bg-cardBg p-8 rounded-3xl border border-zinc-800 relative shadow-2xl">
+                <div class="space-y-4">
+                    <div class="flex items-start gap-4">
+                        <div class="bg-primary/10 p-3 rounded-lg text-primary"><i class="fa-solid fa-check"></i></div>
+                        <div>
+                            <h4 class="font-bold text-white mb-1">Equipos Homologados</h4>
+                            <p class="text-sm text-slate-400">Trabajamos exclusivamente con marcas líderes a nivel mundial.</p>
+                        </div>
+                    </div>
+                    <div class="flex items-start gap-4">
+                        <div class="bg-primary/10 p-3 rounded-lg text-primary"><i class="fa-solid fa-check"></i></div>
+                        <div>
+                            <h4 class="font-bold text-white mb-1">Soluciones a la Medida</h4>
+                            <p class="text-sm text-slate-400">Diseñamos arquitecturas específicas según las necesidades de tu espacio.</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- SECCIÓN CONTACTO -->
+    <section id="contacto" class="py-20 bg-zinc-950/60">
+        <div class="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="text-center mb-12">
+                <h2 class="text-primary text-sm font-bold uppercase tracking-widest mb-3">Ponte en contacto</h2>
+                <p class="text-3xl font-bold text-white">¿Listo para mejorar la seguridad de tu empresa u hogar?</p>
+                <p class="text-slate-400 mt-2">Completa el formulario y se abrirá directamente un chat de WhatsApp con los detalles.</p>
+            </div>
+
+            <form id="contact-form" class="bg-cardBg p-8 rounded-3xl border border-zinc-800 shadow-2xl space-y-6">
+                <div class="grid grid-cols-1 sm:grid-cols-2 gap-6">
+                    <div>
+                        <label class="block text-sm font-medium text-slate-300 mb-2">Nombre completo</label>
+                        <input type="text" id="nombre" required class="w-full bg-zinc-900 border border-zinc-700 rounded-xl px-4 py-3 text-white focus:outline-none focus:border-primary transition-colors" placeholder="Tu nombre">
+                    </div>
+                    <div>
+                        <label class="block text-sm font-medium text-slate-300 mb-2">Teléfono de contacto</label>
+                        <input type="tel" id="telefono" required class="w-full bg-zinc-900 border border-zinc-700 rounded-xl px-4 py-3 text-white focus:outline-none focus:border-primary transition-colors" placeholder="Tu número">
+                    </div>
+                </div>
+                <div>
+                    <label class="block text-sm font-medium text-slate-300 mb-2">Servicio de interés</label>
+                    <select id="servicio" class="w-full bg-zinc-900 border border-zinc-700 rounded-xl px-4 py-3 text-white focus:outline-none focus:border-primary transition-colors">
+                        <option>GPS Vehicular</option>
+                        <option>Videovigilancia</option>
+                        <option>Detección de Intrusos</option>
+                        <option>Detección de Incendios</option>
+                        <option>Extinción por Agentes Químicos</option>
+                        <option>Detección Perimetral</option>
+                        <option>Automatización de Ambientes Inteligentes</option>
+                        <option>Cableado Estructurado y Redes</option>
+                        <option>Otro / Múltiples servicios</option>
+                    </select>
+                </div>
+                <div>
+                    <label class="block text-sm font-medium text-slate-300 mb-2">Mensaje / Detalles adicionales</label>
+                    <textarea id="mensaje" rows="4" required class="w-full bg-zinc-900 border border-zinc-700 rounded-xl px-4 py-3 text-white focus:outline-none focus:border-primary transition-colors" placeholder="Cuéntanos sobre tu proyecto..."></textarea>
+                </div>
+                <button type="submit" class="w-full bg-primary hover:bg-primaryHover text-zinc-950 font-bold py-4 rounded-xl transition-all shadow-lg shadow-primary/20 flex items-center justify-center gap-2">
+                    <i class="fa-brands fa-whatsapp text-xl"></i> Enviar consulta por WhatsApp
+                </button>
+            </form>
+        </div>
+    </section>
+
+    <!-- BOTÓN FLOTANTE WHATSAPP -->
+    <a href="https://wa.me/584120000000?text=Hola,%20estoy%20interesado%20en%20los%20servicios%20de%20XONAK." target="_blank" class="fixed bottom-6 right-6 z-50 bg-emerald-500 hover:bg-emerald-600 text-white w-14 h-14 rounded-full flex items-center justify-center text-2xl shadow-2xl transition-transform hover:scale-110">
+        <i class="fa-brands fa-whatsapp"></i>
+    </a>
+
+    <!-- FOOTER -->
+    <footer class="bg-darkBg border-t border-zinc-800 py-10">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 flex flex-col sm:flex-row items-center justify-between gap-4">
+            <div class="flex items-center space-x-3">
+                <i class="fa-solid fa-shield-halved text-primary text-lg"></i>
+                <span class="font-bold text-white">XO<span class="text-primary">NAK</span></span>
+            </div>
+            <p class="text-sm text-slate-500">&copy; 2026 XONAK. Todos los derechos reservados.</p>
+        </div>
+    </footer>
+
+    <!-- JAVASCRIPT -->
+    <script>
+        // Menú móvil
+        const menuBtn = document.getElementById('menu-btn');
+        const mobileMenu = document.getElementById('mobile-menu');
+
+        menuBtn.addEventListener('click', () => {
+            mobileMenu.classList.toggle('hidden');
+        });
+
+        mobileMenu.querySelectorAll('a').forEach(link => {
+            link.addEventListener('click', () => {
+                mobileMenu.classList.add('hidden');
+            });
+        });
+
+        // Enviar formulario conectado directamente a WhatsApp
+        const contactForm = document.getElementById('contact-form');
+        contactForm.addEventListener('submit', (e) => {
+            e.preventDefault();
+            const nombre = document.getElementById('nombre').value;
+            const telefono = document.getElementById('telefono').value;
+            const servicio = document.getElementById('servicio').value;
+            const mensaje = document.getElementById('mensaje').value;
+
+            // Reemplaza el número de teléfono con el tuyo (con código de país, ej: 58412...)
+            const tuNumeroWhatsApp = "584120000000"; 
+
+            const textoUrl = `Hola XONAK, mi nombre es *${nombre}* (Tel: ${telefono}). Me interesa el servicio de *${servicio}*. Detalle: ${mensaje}`;
+            const urlWhatsApp = `https://wa.me/${tuNumeroWhatsApp}?text=${encodeURIComponent(textoUrl)}`;
+
+            window.open(urlWhatsApp, '_blank');
+        });
+    </script>
+</body>
+</html>
