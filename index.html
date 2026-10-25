@@ -3,306 +3,710 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>XONAK | Tecnología, Seguridad e Infraestructura Integral</title>
-    <!-- Tailwind CSS CDN -->
+    <meta name="description" content="XONAK ofrece soluciones de seguridad electrónica, videovigilancia, automatización y redes para empresas y hogares.">
+    <title>XONAK | Seguridad electrónica y tecnología avanzada</title>
+
     <script src="https://cdn.tailwindcss.com"></script>
-    <!-- FontAwesome para iconos -->
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+
     <script>
         tailwind.config = {
             theme: {
                 extend: {
                     colors: {
-                        primary: '#eab308', // Amarillo principal
+                        primary: '#eab308',
                         primaryHover: '#ca8a04',
-                        darkBg: '#09090b', // Negro moderno
-                        cardBg: '#18181b'  // Gris oscuro / Zinc 900
+                        darkBg: '#09090b',
+                        cardBg: '#18181b',
+                        line: '#27272a'
+                    },
+                    boxShadow: {
+                        glow: '0 0 30px rgba(234, 179, 8, 0.22)'
                     }
                 }
             }
-        }
+        };
     </script>
-</head>
-<body class="bg-darkBg text-slate-100 font-sans antialiased selection:bg-primary selection:text-zinc-950">
+    <style>
+        body {
+            background-color: #050505;
+            background-image: radial-gradient(ellipse at 82% 6%, rgba(243, 211, 8, 0.055), transparent 34rem), linear-gradient(180deg, #050505 0%, #090909 52%, #060606 100%);
+            font-family: "Segoe UI", Arial, sans-serif;
+        }
 
-    <!-- HEADER / NAVEGACIÓN -->
-    <header class="fixed top-0 left-0 w-full z-50 bg-darkBg/90 backdrop-blur-md border-b border-zinc-800">
-        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 h-20 flex items-center justify-between">
-            <div class="flex items-center space-x-3">
-                <div class="bg-primary/10 p-2.5 rounded-lg border border-primary/30">
-                    <i class="fa-solid fa-shield-halved text-primary text-xl"></i>
-                </div>
-                <span class="text-2xl font-black tracking-wider text-white">XO<span class="text-primary">NAK</span></span>
-            </div>
-            
-            <!-- Menú Escritorio -->
-            <nav class="hidden md:flex items-center space-x-8 text-sm font-medium text-slate-300">
-                <a href="#inicio" class="hover:text-primary transition-colors">Inicio</a>
-                <a href="#servicios" class="hover:text-primary transition-colors">Servicios</a>
-                <a href="#nosotros" class="hover:text-primary transition-colors">Nosotros</a>
-                <a href="#contacto" class="bg-primary hover:bg-primaryHover text-zinc-950 px-5 py-2.5 rounded-lg font-bold transition-all shadow-lg shadow-primary/20">Contacto</a>
+        .hero-ambient {
+            position: absolute;
+            inset: 0;
+            background: radial-gradient(circle at center, rgba(234, 179, 8, 0.02), transparent 55%);
+            pointer-events: none;
+        }
+
+        .hero-grid {
+            position: relative;
+            z-index: 1;
+            display: grid;
+            grid-template-columns: 1.15fr 0.85fr;
+            align-items: center;
+            min-height: 75vh;
+        }
+
+        .brand-lockup {
+            margin-top: 1rem;
+        }
+
+        .brand-art {
+            display: block;
+            width: min(100%, 610px);
+            height: auto;
+            object-fit: contain;
+            object-position: left center;
+            filter: contrast(1.8);
+            mix-blend-mode: screen;
+        }
+
+        .nav-brand-art {
+            display: block;
+            width: 150px;
+            height: 34px;
+            object-fit: cover;
+            object-position: center 24%;
+            mix-blend-mode: screen;
+        }
+
+        .contact-list {
+            list-style: none;
+            padding: 0;
+            margin: 2.2rem 0 0;
+            display: flex;
+            flex-direction: column;
+            gap: 1rem;
+            color: #f5f5f5;
+            font-size: clamp(1.1rem, 1.6vw, 2rem);
+            font-weight: 500;
+        }
+
+        .contact-list li {
+            display: flex;
+            align-items: center;
+            gap: 1.1rem;
+            line-height: 1.3;
+        }
+
+        .contact-icon {
+            width: 2.75rem;
+            height: 2.75rem;
+            min-width: 2.75rem;
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+            border-radius: 9999px;
+            border: 2px solid #f3d308;
+            color: #f3d308;
+            background: rgba(243, 211, 8, 0.04);
+            font-size: 1.1rem;
+        }
+
+        .service-strip {
+            display: flex;
+            grid-column: 1 / -1;
+            align-items: center;
+            justify-content: space-between;
+            gap: 1.25rem;
+            min-width: 0;
+            overflow-x: auto;
+            padding: 1rem 0 0.75rem;
+            border-top: 1px solid rgba(255, 255, 255, 0.1);
+            color: #f3d308;
+            font-size: 0.7rem;
+            letter-spacing: 0.06em;
+            font-weight: 700;
+            text-transform: uppercase;
+            scrollbar-width: none;
+        }
+
+        .service-strip::-webkit-scrollbar {
+            display: none;
+        }
+
+        .service-strip span {
+            display: inline-flex;
+            align-items: center;
+            gap: 0.45rem;
+            flex: 0 0 auto;
+            white-space: nowrap;
+        }
+
+        .service-strip span::before {
+            content: "";
+            width: 0.35rem;
+            height: 0.35rem;
+            flex: 0 0 auto;
+            border-radius: 50%;
+            background: #f3d308;
+        }
+
+        .hero-visual {
+            position: relative;
+            min-height: 620px;
+            width: 100%;
+            overflow: hidden;
+            border: 1px solid rgba(255, 255, 255, 0.08);
+            border-radius: 4px;
+            background: radial-gradient(ellipse at 38% 52%, rgba(255, 255, 255, 0.035), transparent 54%), linear-gradient(145deg, #101010, #060606 70%);
+            isolation: isolate;
+        }
+
+        .hero-background-image {
+            position: absolute;
+            z-index: -1;
+            inset: 0;
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            object-position: center 54%;
+            filter: brightness(0.62) saturate(0.78);
+        }
+
+        .hero-visual::after {
+            content: "";
+            position: absolute;
+            z-index: 0;
+            inset: 0;
+            background: linear-gradient(90deg, rgba(5, 5, 5, 0.66), rgba(5, 5, 5, 0.22) 60%, rgba(5, 5, 5, 0.12)), linear-gradient(0deg, rgba(5, 5, 5, 0.48), transparent 62%);
+            pointer-events: none;
+        }
+
+        .hero-caption {
+            position: absolute;
+            z-index: 1;
+            left: 2rem;
+            bottom: 2rem;
+            color: white;
+            font-size: 0.75rem;
+            font-weight: 700;
+            letter-spacing: 0.16em;
+            text-transform: uppercase;
+        }
+
+        .hero-caption span {
+            display: block;
+            margin-top: 0.45rem;
+            color: #f3d308;
+            font-size: 0.65rem;
+        }
+
+        .service-image {
+            position: relative;
+            height: 190px;
+            margin: -1.5rem -1.5rem 1.25rem;
+            overflow: hidden;
+            background: radial-gradient(circle at 50% 40%, #333 0, #161616 72%);
+            border-radius: 4px;
+        }
+
+        #servicios article {
+            overflow: hidden;
+        }
+
+        .service-image.product-showcase {
+            background: linear-gradient(145deg, #f0f1f2, #dfe2e4);
+        }
+
+        .service-image img {
+            display: block;
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            transition: transform 500ms ease;
+        }
+
+        .service-image img.product-cutout {
+            object-fit: contain;
+            padding: 0.8rem;
+            mix-blend-mode: multiply;
+            transform: none;
+        }
+
+        .service-image.product-showcase::after {
+            background: linear-gradient(0deg, rgba(9, 9, 11, 0.06), transparent 55%);
+        }
+
+        .brand-credit {
+            position: absolute;
+            z-index: 3;
+            top: 0.85rem;
+            left: 0.85rem;
+            padding: 0.35rem 0.55rem;
+            background: rgba(0, 0, 0, 0.82);
+            color: #f3d308;
+            font-size: 0.62rem;
+            font-weight: 800;
+            letter-spacing: 0.1em;
+            line-height: 1;
+            text-transform: uppercase;
+        }
+
+        .brand-roster {
+            border-top: 1px solid #27272a;
+            border-bottom: 1px solid #27272a;
+            background: #0a0a0a;
+        }
+
+        .brand-roster-inner {
+            display: flex;
+            flex-wrap: wrap;
+            align-items: center;
+            justify-content: center;
+            gap: 1rem 2rem;
+            padding: 1.5rem 1rem;
+        }
+
+        .brand-roster-label {
+            color: #a1a1aa;
+            font-size: 0.72rem;
+            font-weight: 700;
+            letter-spacing: 0.14em;
+            text-transform: uppercase;
+        }
+
+        .brand-roster a {
+            color: #e4e4e7;
+            font-size: 0.92rem;
+            font-weight: 700;
+            text-decoration: none;
+            transition: color 180ms ease;
+        }
+
+        .brand-roster a:hover,
+        .brand-roster a:focus-visible {
+            color: #f3d308;
+        }
+
+        .service-image::after {
+            content: "";
+            position: absolute;
+            z-index: 1;
+            inset: 0;
+            background: linear-gradient(0deg, rgba(9, 9, 11, 0.55), transparent 72%);
+        }
+
+        .group:hover .service-image img {
+            transform: scale(1.06);
+        }
+
+        .group:hover .service-image img.product-cutout {
+            transform: scale(1.03);
+        }
+
+        @media (max-width: 1024px) {
+            .hero-grid {
+                grid-template-columns: 1.05fr 0.95fr;
+                text-align: left;
+                gap: 1.5rem;
+            }
+
+            .hero-visual {
+                min-height: 460px;
+            }
+
+        }
+
+        @media (max-width: 768px) {
+            .hero-grid {
+                grid-template-columns: 1fr;
+                align-items: start;
+                min-height: 0;
+                gap: 2rem;
+            }
+
+            .hero-copy {
+                display: contents;
+            }
+
+            .brand-lockup {
+                order: 1;
+            }
+
+            .hero-visual {
+                order: 2;
+                min-height: 300px;
+            }
+
+            .brand-art {
+                width: min(100%, 500px);
+            }
+
+            .nav-brand-art {
+                width: 118px;
+                height: 30px;
+            }
+
+            .contact-list {
+                order: 3;
+                gap: 0.8rem;
+                font-size: 1.05rem;
+            }
+
+            .service-strip {
+                order: 4;
+            }
+
+            .contact-icon {
+                width: 2.25rem;
+                height: 2.25rem;
+                min-width: 2.25rem;
+                font-size: 0.95rem;
+            }
+
+            .service-strip {
+                justify-content: flex-start;
+                gap: 1.25rem;
+                font-size: 0.66rem;
+            }
+
+            .service-image {
+                height: 190px;
+            }
+
+            .brand-roster-inner {
+                justify-content: flex-start;
+                gap: 0.85rem 1.25rem;
+            }
+
+            .brand-roster-label {
+                flex-basis: 100%;
+            }
+        }
+    </style>
+</head>
+
+<body class="bg-darkBg text-slate-100 antialiased selection:bg-primary selection:text-zinc-950">
+    <header class="fixed left-0 top-0 z-50 w-full border-b border-zinc-800/70 bg-black/80 backdrop-blur-md">
+        <div class="mx-auto flex h-20 max-w-7xl items-center justify-between px-4 sm:px-6 lg:px-8">
+            <a href="#inicio" class="flex items-center" aria-label="Ir al inicio">
+                <img class="nav-brand-art" src="ref/WhatsApp%20Image%202026-10-24%20at%2020.07.40.jpeg" alt="Xonak Projects">
+            </a>
+
+            <nav class="hidden items-center gap-8 text-sm font-medium text-slate-300 md:flex" aria-label="Navegación principal">
+                <a href="#inicio" class="transition-colors hover:text-primary">Inicio</a>
+                <a href="#servicios" class="transition-colors hover:text-primary">Servicios</a>
+                <a href="#nosotros" class="transition-colors hover:text-primary">Nosotros</a>
+                <a href="#contacto" class="rounded-lg bg-primary px-5 py-2.5 font-bold text-zinc-950 shadow-lg shadow-primary/20 transition-all hover:bg-primaryHover">Contacto</a>
             </nav>
 
-            <!-- Botón Menú Móvil -->
-            <button id="menu-btn" class="md:hidden text-slate-300 hover:text-white focus:outline-none">
+            <button id="menu-btn" class="inline-flex items-center justify-center rounded-lg border border-zinc-700 p-2 text-slate-300 transition-colors hover:text-white md:hidden" aria-label="Abrir menú" aria-expanded="false" aria-controls="mobile-menu">
                 <i class="fa-solid fa-bars text-2xl"></i>
             </button>
         </div>
 
-        <!-- Menú Desplegable Móvil -->
-        <div id="mobile-menu" class="hidden md:hidden bg-cardBg border-b border-zinc-800 px-4 pt-2 pb-6 space-y-3">
-            <a href="#inicio" class="block text-slate-300 hover:text-primary py-2">Inicio</a>
-            <a href="#servicios" class="block text-slate-300 hover:text-primary py-2">Servicios</a>
-            <a href="#nosotros" class="block text-slate-300 hover:text-primary py-2">Nosotros</a>
-            <a href="#contacto" class="block text-center bg-primary text-zinc-950 py-2.5 rounded-lg font-bold">Contacto</a>
+        <div id="mobile-menu" class="hidden border-t border-zinc-800 bg-cardBg px-4 pb-6 pt-3 md:hidden">
+            <nav class="space-y-2" aria-label="Menú móvil">
+                <a href="#inicio" class="block rounded-lg px-3 py-2 text-slate-300 transition-colors hover:bg-zinc-800 hover:text-primary">Inicio</a>
+                <a href="#servicios" class="block rounded-lg px-3 py-2 text-slate-300 transition-colors hover:bg-zinc-800 hover:text-primary">Servicios</a>
+                <a href="#nosotros" class="block rounded-lg px-3 py-2 text-slate-300 transition-colors hover:bg-zinc-800 hover:text-primary">Nosotros</a>
+                <a href="#contacto" class="mt-2 block rounded-lg bg-primary px-3 py-2.5 text-center font-bold text-zinc-950 transition-all hover:bg-primaryHover">Contacto</a>
+            </nav>
         </div>
     </header>
 
-    <!-- HERO SECTION -->
-    <section id="inicio" class="pt-32 pb-20 md:pt-44 md:pb-32 relative overflow-hidden">
-        <div class="absolute inset-0 bg-[radial-gradient(ellipse_80%_80%_at_50%_-20%,rgba(234,179,8,0.15),rgba(255,255,255,0))]"></div>
-        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10 text-center">
-            <div class="inline-flex items-center gap-2 px-4 py-2 rounded-full bg-zinc-900 border border-zinc-800 text-primary text-xs font-bold uppercase tracking-widest mb-6 shadow-md">
-                <i class="fa-solid fa-circle-check"></i> Seguridad Electrónica & Infraestructura Profesional
-            </div>
-            <h1 class="text-4xl sm:text-6xl font-extrabold text-white tracking-tight max-w-4xl mx-auto leading-tight mb-6">
-                Protección, Automatización y Conectividad Avanzada
-            </h1>
-            <p class="text-lg sm:text-xl text-slate-400 max-w-2xl mx-auto mb-10">
-                Soluciones de alta gama en monitoreo vehicular, videovigilancia con IA, extinción de incendios y redes estructuradas para empresas y hogares.
-            </p>
-            <div class="flex flex-col sm:flex-row justify-center gap-4">
-                <a href="#servicios" class="bg-primary hover:bg-primaryHover text-zinc-950 font-bold px-8 py-4 rounded-xl transition-all shadow-xl shadow-primary/20">
-                    Ver Servicios
-                </a>
-                <a href="#contacto" class="bg-zinc-900 hover:bg-zinc-800 border border-zinc-800 text-white font-semibold px-8 py-4 rounded-xl transition-all">
-                    Cotizar Proyecto
-                </a>
-            </div>
-        </div>
-    </section>
-
-    <!-- SECCIÓN DE SERVICIOS -->
-    <section id="servicios" class="py-20 bg-zinc-950/60">
-        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-            <div class="text-center max-w-3xl mx-auto mb-16">
-                <h2 class="text-primary text-sm font-bold uppercase tracking-widest mb-3">Nuestras Capacidades</h2>
-                <p class="text-3xl sm:text-4xl font-bold text-white">Servicios especializados para tu tranquilidad y operación</p>
-            </div>
-
-            <!-- Grid de Servicios (8 elementos) -->
-            <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6">
-                
-                <!-- 1. GPS Vehicular -->
-                <div class="bg-cardBg p-6 rounded-2xl border border-zinc-800 hover:border-primary/60 transition-all group shadow-lg">
-                    <div class="w-12 h-12 rounded-xl bg-primary/10 flex items-center justify-center text-primary text-xl mb-5 group-hover:bg-primary group-hover:text-zinc-950 transition-all">
-                        <i class="fa-solid fa-location-crosshairs"></i>
+    <main>
+        <section id="inicio" class="relative overflow-hidden bg-black pb-20 pt-32 md:pb-24 md:pt-36">
+            <div class="hero-ambient"></div>
+            <div class="hero-grid mx-auto max-w-[1500px] px-4 sm:px-6 lg:px-8">
+                <div class="hero-copy">
+                    <div class="brand-lockup">
+                        <h1 class="sr-only">Xonak Projects: Tecnología que protege y potencia tu mundo</h1>
+                        <img class="brand-art" src="ref/WhatsApp%20Image%202026-10-24%20at%2020.07.40.jpeg" alt="Xonak Projects. Tecnología que protege y potencia tu mundo">
                     </div>
-                    <h3 class="text-lg font-bold text-white mb-2">GPS Vehicular</h3>
-                    <p class="text-sm text-slate-400 leading-relaxed">Localización satelital en tiempo real, control de flotas, apagado remoto y alertas de velocidad.</p>
+
+                    <ul class="contact-list">
+                        <li>
+                            <span class="contact-icon"><i class="fa-solid fa-phone"></i></span>
+                            <span>+58 412 474 4801</span>
+                        </li>
+                        <li>
+                            <span class="contact-icon"><i class="fa-solid fa-envelope"></i></span>
+                            <span>xonakprojects@gmail.com</span>
+                        </li>
+                        <li>
+                            <span class="contact-icon"><i class="fa-solid fa-location-dot"></i></span>
+                            <span>Zulia · Venezuela</span>
+                        </li>
+                    </ul>
+
                 </div>
 
-                <!-- 2. Videovigilancia -->
-                <div class="bg-cardBg p-6 rounded-2xl border border-zinc-800 hover:border-primary/60 transition-all group shadow-lg">
-                    <div class="w-12 h-12 rounded-xl bg-primary/10 flex items-center justify-center text-primary text-xl mb-5 group-hover:bg-primary group-hover:text-zinc-950 transition-all">
-                        <i class="fa-solid fa-video"></i>
-                    </div>
-                    <h3 class="text-lg font-bold text-white mb-2">Videovigilancia</h3>
-                    <p class="text-sm text-slate-400 leading-relaxed">Sistemas de circuito cerrado (CCTV) con analítica de video avanzada e inteligencia artificial.</p>
+                <div class="hero-visual" aria-hidden="true">
+                    <img class="hero-background-image" src="assets/brands/hikvision-office-hero.jpg" alt="">
+                    <div class="hero-caption">Infraestructura y seguridad integrada<span>Control · Prevención · Respuesta</span></div>
                 </div>
 
-                <!-- 3. Detección de Intrusos -->
-                <div class="bg-cardBg p-6 rounded-2xl border border-zinc-800 hover:border-primary/60 transition-all group shadow-lg">
-                    <div class="w-12 h-12 rounded-xl bg-primary/10 flex items-center justify-center text-primary text-xl mb-5 group-hover:bg-primary group-hover:text-zinc-950 transition-all">
-                        <i class="fa-solid fa-user-secret"></i>
-                    </div>
-                    <h3 class="text-lg font-bold text-white mb-2">Detección de Intrusos</h3>
-                    <p class="text-sm text-slate-400 leading-relaxed">Sistemas de alarma anti-intrusión de alta fiabilidad con sensores de movimiento y apertura.</p>
-                </div>
-
-                <!-- 4. Detección de Incendios -->
-                <div class="bg-cardBg p-6 rounded-2xl border border-zinc-800 hover:border-primary/60 transition-all group shadow-lg">
-                    <div class="w-12 h-12 rounded-xl bg-primary/10 flex items-center justify-center text-primary text-xl mb-5 group-hover:bg-primary group-hover:text-zinc-950 transition-all">
-                        <i class="fa-solid fa-fire-flame-curved"></i>
-                    </div>
-                    <h3 class="text-lg font-bold text-white mb-2">Detección de Incendios</h3>
-                    <p class="text-sm text-slate-400 leading-relaxed">Paneles inteligentes, detectores de humo y calor convencionales y direccionados.</p>
-                </div>
-
-                <!-- 5. Extinción por Agentes Químicos -->
-                <div class="bg-cardBg p-6 rounded-2xl border border-zinc-800 hover:border-primary/60 transition-all group shadow-lg">
-                    <div class="w-12 h-12 rounded-xl bg-primary/10 flex items-center justify-center text-primary text-xl mb-5 group-hover:bg-primary group-hover:text-zinc-950 transition-all">
-                        <i class="fa-solid fa-fire-extinguisher"></i>
-                    </div>
-                    <h3 class="text-lg font-bold text-white mb-2">Extinción por Agentes Químicos</h3>
-                    <p class="text-sm text-slate-400 leading-relaxed">Sistemas automáticos de supresión de fuego para áreas críticas como centros de datos y salas eléctricas.</p>
-                </div>
-
-                <!-- 6. Detección Perimetral -->
-                <div class="bg-cardBg p-6 rounded-2xl border border-zinc-800 hover:border-primary/60 transition-all group shadow-lg">
-                    <div class="w-12 h-12 rounded-xl bg-primary/10 flex items-center justify-center text-primary text-xl mb-5 group-hover:bg-primary group-hover:text-zinc-950 transition-all">
-                        <i class="fa-solid fa-fence"></i>
-                    </div>
-                    <h3 class="text-lg font-bold text-white mb-2">Detección Perimetral</h3>
-                    <p class="text-sm text-slate-400 leading-relaxed">Barreras infrarrojas, cercos eléctricos y microondas para asegurar los límites exteriores.</p>
-                </div>
-
-                <!-- 7. Automatización de Ambientes Inteligentes -->
-                <div class="bg-cardBg p-6 rounded-2xl border border-zinc-800 hover:border-primary/60 transition-all group shadow-lg">
-                    <div class="w-12 h-12 rounded-xl bg-primary/10 flex items-center justify-center text-primary text-xl mb-5 group-hover:bg-primary group-hover:text-zinc-950 transition-all">
-                        <i class="fa-solid fa-house-laptop"></i>
-                    </div>
-                    <h3 class="text-lg font-bold text-white mb-2">Ambientes Inteligentes</h3>
-                    <p class="text-sm text-slate-400 leading-relaxed">Domótica y automatización de iluminación, climatización, accesos y escenarios personalizados.</p>
-                </div>
-
-                <!-- 8. Cableado Estructurado y Redes -->
-                <div class="bg-cardBg p-6 rounded-2xl border border-zinc-800 hover:border-primary/60 transition-all group shadow-lg">
-                    <div class="w-12 h-12 rounded-xl bg-primary/10 flex items-center justify-center text-primary text-xl mb-5 group-hover:bg-primary group-hover:text-zinc-950 transition-all">
-                        <i class="fa-solid fa-network-wired"></i>
-                    </div>
-                    <h3 class="text-lg font-bold text-white mb-2">Cableado Estructurado y Redes</h3>
-                    <p class="text-sm text-slate-400 leading-relaxed">Diseño e instalación de redes de datos UTP/Fibra óptica, certificación y gabinetes.</p>
-                </div>
-
-            </div>
-        </div>
-    </section>
-
-    <!-- SECCIÓN NOSOTROS -->
-    <section id="nosotros" class="py-20">
-        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 grid grid-cols-1 lg:grid-cols-2 gap-12 items-center">
-            <div>
-                <h2 class="text-primary text-sm font-bold uppercase tracking-widest mb-3">Compromiso y Experiencia</h2>
-                <p class="text-3xl font-bold text-white mb-6">Tecnología de punta para blindar tu entorno físico y digital</p>
-                <p class="text-slate-400 mb-6 leading-relaxed">
-                    Contamos con un equipo de ingenieros y técnicos certificados dedicados a integrar sistemas complejos con la más alta calidad del mercado. Garantizamos estabilidad, eficiencia y soporte técnico post-venta.
-                </p>
-                <div class="grid grid-cols-2 gap-6">
-                    <div class="bg-cardBg p-4 rounded-xl border border-zinc-800">
-                        <span class="block text-3xl font-extrabold text-primary mb-1">+500</span>
-                        <span class="text-sm text-slate-400">Proyectos exitosos</span>
-                    </div>
-                    <div class="bg-cardBg p-4 rounded-xl border border-zinc-800">
-                        <span class="block text-3xl font-extrabold text-primary mb-1">24/7</span>
-                        <span class="text-sm text-slate-400">Monitoreo y soporte</span>
-                    </div>
+                <div class="service-strip" aria-label="Servicios principales">
+                    <span>GPS / FLOTAS</span>
+                    <span>ALARMAS</span>
+                    <span>AUTOMATIZACIÓN</span>
+                    <span>CÁMARAS</span>
+                    <span>INCENDIOS</span>
+                    <span>EXTINCIÓN</span>
+                    <span>PERIMETRAL</span>
+                    <span>CABLEADO Y REDES</span>
                 </div>
             </div>
-            <div class="bg-cardBg p-8 rounded-3xl border border-zinc-800 relative shadow-2xl">
-                <div class="space-y-4">
-                    <div class="flex items-start gap-4">
-                        <div class="bg-primary/10 p-3 rounded-lg text-primary"><i class="fa-solid fa-check"></i></div>
-                        <div>
-                            <h4 class="font-bold text-white mb-1">Equipos Homologados</h4>
-                            <p class="text-sm text-slate-400">Trabajamos exclusivamente con marcas líderes a nivel mundial.</p>
+        </section>
+
+        <section class="brand-roster" aria-label="Marcas y plataformas integradas">
+            <div class="brand-roster-inner mx-auto max-w-7xl">
+                <span class="brand-roster-label">Marcas y plataformas integradas</span>
+                <a href="https://www.hikvision.com/" target="_blank" rel="noopener noreferrer">Hikvision</a>
+                <a href="https://teltonika-gps.com/" target="_blank" rel="noopener noreferrer">Teltonika</a>
+                <a href="https://www.paradox.com/" target="_blank" rel="noopener noreferrer">Paradox Security</a>
+                <a href="https://wialon.com/" target="_blank" rel="noopener noreferrer">Wialon · Gurtam</a>
+                <a href="https://www.dsc.com/" target="_blank" rel="noopener noreferrer">DSC</a>
+                <a href="https://www.ge.com/digital/" target="_blank" rel="noopener noreferrer">GE Security</a>
+                <a href="https://www.siemens.com/" target="_blank" rel="noopener noreferrer">Siemens</a>
+                <a href="https://www.shelly.com/" target="_blank" rel="noopener noreferrer">Shelly</a>
+                <a href="https://ui.com/" target="_blank" rel="noopener noreferrer">Ubiquiti</a>
+                <a href="https://mikrotik.com/" target="_blank" rel="noopener noreferrer">MikroTik</a>
+            </div>
+        </section>
+
+        <section id="servicios" class="bg-zinc-950/60 py-20">
+            <div class="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
+                <div class="mx-auto mb-16 max-w-3xl text-center">
+                    <h2 class="mb-3 text-sm font-bold uppercase tracking-widest text-primary">Nuestras Capacidades</h2>
+                    <p class="text-3xl font-bold text-white sm:text-4xl">Servicios especializados para tu tranquilidad y operación</p>
+                </div>
+
+                <div class="grid grid-cols-1 gap-6 md:grid-cols-2 lg:grid-cols-3">
+                    <article class="group rounded-2xl border border-zinc-800 bg-cardBg p-6 shadow-lg transition-all hover:border-primary/60">
+                        <div class="service-image product-showcase"><img class="product-cutout" src="assets/brands/teltonika-fmc130.png" alt="Localizador GPS Teltonika FMC130" loading="lazy"><span class="brand-credit">Teltonika FMC130 · Wialon</span></div>
+                        <div class="mb-5 flex h-12 w-12 items-center justify-center rounded-xl bg-primary/10 text-xl text-primary transition-all group-hover:bg-primary group-hover:text-zinc-950"><i class="fa-solid fa-location-crosshairs"></i></div>
+                        <h3 class="mb-2 text-lg font-bold text-white">GPS Vehicular</h3>
+                        <p class="text-sm leading-relaxed text-slate-400">Localizador 4G LTE Cat 1 con entradas flexibles, integrado con Wialon para ubicación, alertas y gestión de flotas.</p>
+                    </article>
+
+                    <article class="group rounded-2xl border border-zinc-800 bg-cardBg p-6 shadow-lg transition-all hover:border-primary/60">
+                        <div class="service-image product-showcase"><img class="product-cutout" src="assets/brands/hikvision-acusense-turret.webp" alt="Cámara turret Hikvision AcuSense de 12 megapíxeles" loading="lazy"><span class="brand-credit">Hikvision AcuSense · 12 MP</span></div>
+                        <div class="mb-5 flex h-12 w-12 items-center justify-center rounded-xl bg-primary/10 text-xl text-primary transition-all group-hover:bg-primary group-hover:text-zinc-950"><i class="fa-solid fa-video"></i></div>
+                        <h3 class="mb-2 text-lg font-bold text-white">Videovigilancia</h3>
+                        <p class="text-sm leading-relaxed text-slate-400">Cámaras AcuSense con clasificación inteligente de personas y vehículos, imagen de alta resolución y visión nocturna ColorVu.</p>
+                    </article>
+
+                    <article class="group rounded-2xl border border-zinc-800 bg-cardBg p-6 shadow-lg transition-all hover:border-primary/60">
+                        <div class="service-image product-showcase"><img class="product-cutout" src="assets/brands/hikvision-ax-pro-kit.webp" alt="Kit Hikvision AX PRO con panel, sensor de movimiento y contacto magnético" loading="lazy"><span class="brand-credit">Hikvision AX PRO</span></div>
+                        <div class="mb-5 flex h-12 w-12 items-center justify-center rounded-xl bg-primary/10 text-xl text-primary transition-all group-hover:bg-primary group-hover:text-zinc-950"><i class="fa-solid fa-user-secret"></i></div>
+                        <h3 class="mb-2 text-lg font-bold text-white">Detección de Intrusos</h3>
+                        <p class="text-sm leading-relaxed text-slate-400">Sistemas de alarma anti-intrusión con sensores de movimiento, apertura y monitoreo inteligente.</p>
+                    </article>
+
+                    <article class="group rounded-2xl border border-zinc-800 bg-cardBg p-6 shadow-lg transition-all hover:border-primary/60">
+                        <div class="service-image"><img src="assets/brands/siemens-fire-detectors.jpg" alt="Detectores inteligentes de incendio Siemens Sinteso Nova" loading="lazy"><span class="brand-credit">Siemens</span></div>
+                        <div class="mb-5 flex h-12 w-12 items-center justify-center rounded-xl bg-primary/10 text-xl text-primary transition-all group-hover:bg-primary group-hover:text-zinc-950"><i class="fa-solid fa-fire-flame-curved"></i></div>
+                        <h3 class="mb-2 text-lg font-bold text-white">Detección de Incendios</h3>
+                        <p class="text-sm leading-relaxed text-slate-400">Paneles inteligentes, detectores de humo y calor convencionales y direccionados.</p>
+                    </article>
+
+                    <article class="group rounded-2xl border border-zinc-800 bg-cardBg p-6 shadow-lg transition-all hover:border-primary/60">
+                        <div class="service-image"><img src="assets/brands/siemens-fire-safety-installation.jpg" alt="Instalación industrial protegida con soluciones de seguridad Siemens" loading="lazy"><span class="brand-credit">Siemens fire safety</span></div>
+                        <div class="mb-5 flex h-12 w-12 items-center justify-center rounded-xl bg-primary/10 text-xl text-primary transition-all group-hover:bg-primary group-hover:text-zinc-950"><i class="fa-solid fa-fire-extinguisher"></i></div>
+                        <h3 class="mb-2 text-lg font-bold text-white">Extinción por Agentes Químicos</h3>
+                        <p class="text-sm leading-relaxed text-slate-400">Sistemas automáticos de supresión para zonas estratégicas, como salas técnicas y eléctricos.</p>
+                    </article>
+
+                    <article class="group rounded-2xl border border-zinc-800 bg-cardBg p-6 shadow-lg transition-all hover:border-primary/60">
+                        <div class="service-image product-showcase"><img class="product-cutout" src="assets/brands/ubiquiti-g6-pro-bullet.png" alt="Cámara exterior Ubiquiti G6 Pro Bullet para vigilancia perimetral" loading="lazy"><span class="brand-credit">Ubiquiti</span></div>
+                        <div class="mb-5 flex h-12 w-12 items-center justify-center rounded-xl bg-primary/10 text-xl text-primary transition-all group-hover:bg-primary group-hover:text-zinc-950"><i class="fa-solid fa-fence"></i></div>
+                        <h3 class="mb-2 text-lg font-bold text-white">Detección Perimetral</h3>
+                        <p class="text-sm leading-relaxed text-slate-400">Barreras infrarrojas, cercos eléctricos y sensores para asegurar los perímetros exteriores.</p>
+                    </article>
+
+                    <article class="group rounded-2xl border border-zinc-800 bg-cardBg p-6 shadow-lg transition-all hover:border-primary/60">
+                        <div class="service-image product-showcase"><img class="product-cutout" src="assets/brands/shelly-1-gen3.png" alt="Módulo de automatización Shelly 1 Gen3" loading="lazy"><span class="brand-credit">Shelly</span></div>
+                        <div class="mb-5 flex h-12 w-12 items-center justify-center rounded-xl bg-primary/10 text-xl text-primary transition-all group-hover:bg-primary group-hover:text-zinc-950"><i class="fa-solid fa-house-laptop"></i></div>
+                        <h3 class="mb-2 text-lg font-bold text-white">Ambientes Inteligentes</h3>
+                        <p class="text-sm leading-relaxed text-slate-400">Domótica y automatización para climatización, iluminación, accesos y control total del entorno.</p>
+                    </article>
+
+                    <article class="group rounded-2xl border border-zinc-800 bg-cardBg p-6 shadow-lg transition-all hover:border-primary/60">
+                        <div class="service-image product-showcase"><img class="product-cutout" src="assets/brands/mikrotik-router.webp" alt="Equipo de red MikroTik para conectividad profesional" loading="lazy"><span class="brand-credit">MikroTik</span></div>
+                        <div class="mb-5 flex h-12 w-12 items-center justify-center rounded-xl bg-primary/10 text-xl text-primary transition-all group-hover:bg-primary group-hover:text-zinc-950"><i class="fa-solid fa-network-wired"></i></div>
+                        <h3 class="mb-2 text-lg font-bold text-white">Cableado Estructurado y Redes</h3>
+                        <p class="text-sm leading-relaxed text-slate-400">Diseño e instalación de redes UTP, fibra óptica y certificación de infraestructura tecnológica.</p>
+                    </article>
+                </div>
+            </div>
+        </section>
+
+        <section id="nosotros" class="py-20">
+            <div class="mx-auto grid max-w-7xl items-center gap-12 px-4 sm:px-6 lg:grid-cols-2 lg:px-8">
+                <div>
+                    <h2 class="mb-3 text-sm font-bold uppercase tracking-widest text-primary">Compromiso y Experiencia</h2>
+                    <p class="mb-6 text-3xl font-bold text-white">Seguridad integral, diseñada para operar con confianza</p>
+                    <p class="mb-6 leading-relaxed text-slate-400">En XONAK Projects integramos videovigilancia, alarmas, protección contra incendios, rastreo GPS, automatización y redes. Cada solución se adapta al riesgo, la operación y la infraestructura del cliente, con atención a la protección física y digital durante todo el ciclo del proyecto.</p>
+
+                    <div class="grid grid-cols-2 gap-6">
+                        <div class="rounded-xl border border-zinc-800 bg-cardBg p-4">
+                            <span class="mb-1 block text-3xl font-extrabold text-primary">+500</span>
+                            <span class="text-sm text-slate-400">Proyectos exitosos</span>
+                        </div>
+                        <div class="rounded-xl border border-zinc-800 bg-cardBg p-4">
+                            <span class="mb-1 block text-3xl font-extrabold text-primary">24/7</span>
+                            <span class="text-sm text-slate-400">Monitoreo y soporte</span>
                         </div>
                     </div>
-                    <div class="flex items-start gap-4">
-                        <div class="bg-primary/10 p-3 rounded-lg text-primary"><i class="fa-solid fa-check"></i></div>
-                        <div>
-                            <h4 class="font-bold text-white mb-1">Soluciones a la Medida</h4>
-                            <p class="text-sm text-slate-400">Diseñamos arquitecturas específicas según las necesidades de tu espacio.</p>
+                </div>
+
+                <div class="rounded-3xl border border-zinc-800 bg-cardBg p-8 shadow-2xl">
+                    <h3 class="mb-6 text-xl font-bold text-white">Estándares y protección</h3>
+                    <div class="space-y-5">
+                        <div class="flex items-start gap-4 border-b border-zinc-800 pb-5">
+                            <span class="min-w-16 pt-1 text-xs font-extrabold uppercase tracking-wider text-primary">ISO</span>
+                            <div>
+                                <h4 class="mb-1 font-bold text-white">ISO/IEC 27001</h4>
+                                <p class="text-sm leading-relaxed text-slate-400">Aplicamos criterios de gestión de seguridad de la información, control de acceso y protección de activos digitales.</p>
+                            </div>
+                        </div>
+
+                        <div class="flex items-start gap-4 border-b border-zinc-800 pb-5">
+                            <span class="min-w-16 pt-1 text-xs font-extrabold uppercase tracking-wider text-primary">NFPA</span>
+                            <div>
+                                <h4 class="mb-1 font-bold text-white">Protección contra incendios</h4>
+                                <p class="text-sm leading-relaxed text-slate-400">Consideramos las normas NFPA aplicables al diseño y alcance de cada proyecto de detección y supresión.</p>
+                            </div>
+                        </div>
+
+                        <div class="flex items-start gap-4 border-b border-zinc-800 pb-5">
+                            <span class="min-w-16 pt-1 text-xs font-extrabold uppercase tracking-wider text-primary">RoHS</span>
+                            <div>
+                                <h4 class="mb-1 font-bold text-white">Selección responsable de equipos</h4>
+                                <p class="text-sm leading-relaxed text-slate-400">Verificamos las especificaciones y declaraciones del fabricante para los equipos sujetos a requisitos RoHS.</p>
+                            </div>
+                        </div>
+
+                        <div class="flex items-start gap-4">
+                            <span class="min-w-16 pt-1 text-xs font-extrabold uppercase tracking-wider text-primary">CIBER</span>
+                            <div>
+                                <h4 class="mb-1 font-bold text-white">Ciberseguridad corporativa</h4>
+                                <p class="text-sm leading-relaxed text-slate-400">Integramos controles de acceso, segmentación de red, configuración segura y protección de sistemas conectados según las necesidades del cliente.</p>
+                            </div>
                         </div>
                     </div>
+                    <p class="mt-6 border-t border-zinc-800 pt-4 text-xs leading-relaxed text-slate-500">La aplicabilidad normativa depende del alcance, las especificaciones de los equipos y los requisitos de cada instalación.</p>
                 </div>
             </div>
-        </div>
-    </section>
+        </section>
 
-    <!-- SECCIÓN CONTACTO -->
-    <section id="contacto" class="py-20 bg-zinc-950/60">
-        <div class="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8">
-            <div class="text-center mb-12">
-                <h2 class="text-primary text-sm font-bold uppercase tracking-widest mb-3">Ponte en contacto</h2>
-                <p class="text-3xl font-bold text-white">¿Listo para mejorar la seguridad de tu empresa u hogar?</p>
-                <p class="text-slate-400 mt-2">Completa el formulario y se abrirá directamente un chat de WhatsApp con los detalles.</p>
+        <section id="contacto" class="bg-zinc-950/60 py-20">
+            <div class="mx-auto max-w-4xl px-4 sm:px-6 lg:px-8">
+                <div class="mb-12 text-center">
+                    <h2 class="mb-3 text-sm font-bold uppercase tracking-widest text-primary">Ponte en contacto</h2>
+                    <p class="text-3xl font-bold text-white">¿Listo para mejorar la seguridad de tu empresa u hogar?</p>
+                    <p class="mt-2 text-slate-400">Completa el formulario y te enviaremos directamente la consulta por WhatsApp.</p>
+                </div>
+
+                <form id="contact-form" class="space-y-6 rounded-3xl border border-zinc-800 bg-cardBg p-8 shadow-2xl" novalidate>
+                    <div class="grid gap-6 sm:grid-cols-2">
+                        <div>
+                            <label for="nombre" class="mb-2 block text-sm font-medium text-slate-300">Nombre completo</label>
+                            <input id="nombre" name="nombre" type="text" required class="w-full rounded-xl border border-zinc-700 bg-zinc-900 px-4 py-3 text-white transition-colors placeholder:text-slate-500 focus:border-primary focus:outline-none" placeholder="Tu nombre">
+                        </div>
+
+                        <div>
+                            <label for="telefono" class="mb-2 block text-sm font-medium text-slate-300">Teléfono de contacto</label>
+                            <input id="telefono" name="telefono" type="tel" required class="w-full rounded-xl border border-zinc-700 bg-zinc-900 px-4 py-3 text-white transition-colors placeholder:text-slate-500 focus:border-primary focus:outline-none" placeholder="Tu número">
+                        </div>
+                    </div>
+
+                    <div>
+                        <label for="servicio" class="mb-2 block text-sm font-medium text-slate-300">Servicio de interés</label>
+                        <select id="servicio" name="servicio" class="w-full rounded-xl border border-zinc-700 bg-zinc-900 px-4 py-3 text-white transition-colors focus:border-primary focus:outline-none">
+                            <option>GPS Vehicular · Teltonika FMC130</option>
+                            <option>Videovigilancia</option>
+                            <option>Detección de Intrusos</option>
+                            <option>Detección de Incendios</option>
+                            <option>Extinción por Agentes Químicos</option>
+                            <option>Detección Perimetral</option>
+                            <option>Automatización de Ambientes Inteligentes</option>
+                            <option>Cableado Estructurado y Redes</option>
+                            <option>Otro / Múltiples servicios</option>
+                        </select>
+                    </div>
+
+                    <div>
+                        <label for="mensaje" class="mb-2 block text-sm font-medium text-slate-300">Mensaje / Detalles adicionales</label>
+                        <textarea id="mensaje" name="mensaje" rows="4" required class="w-full rounded-xl border border-zinc-700 bg-zinc-900 px-4 py-3 text-white transition-colors placeholder:text-slate-500 focus:border-primary focus:outline-none" placeholder="Cuéntanos sobre tu proyecto..."></textarea>
+                    </div>
+
+                    <button type="submit" class="flex w-full items-center justify-center gap-2 rounded-xl bg-primary px-6 py-4 font-bold text-zinc-950 shadow-lg shadow-primary/20 transition-all hover:bg-primaryHover">
+                        <i class="fa-brands fa-whatsapp text-xl"></i>
+                        Enviar consulta por WhatsApp
+                    </button>
+                </form>
             </div>
+        </section>
+    </main>
 
-            <form id="contact-form" class="bg-cardBg p-8 rounded-3xl border border-zinc-800 shadow-2xl space-y-6">
-                <div class="grid grid-cols-1 sm:grid-cols-2 gap-6">
-                    <div>
-                        <label class="block text-sm font-medium text-slate-300 mb-2">Nombre completo</label>
-                        <input type="text" id="nombre" required class="w-full bg-zinc-900 border border-zinc-700 rounded-xl px-4 py-3 text-white focus:outline-none focus:border-primary transition-colors" placeholder="Tu nombre">
-                    </div>
-                    <div>
-                        <label class="block text-sm font-medium text-slate-300 mb-2">Teléfono de contacto</label>
-                        <input type="tel" id="telefono" required class="w-full bg-zinc-900 border border-zinc-700 rounded-xl px-4 py-3 text-white focus:outline-none focus:border-primary transition-colors" placeholder="Tu número">
-                    </div>
-                </div>
-                <div>
-                    <label class="block text-sm font-medium text-slate-300 mb-2">Servicio de interés</label>
-                    <select id="servicio" class="w-full bg-zinc-900 border border-zinc-700 rounded-xl px-4 py-3 text-white focus:outline-none focus:border-primary transition-colors">
-                        <option>GPS Vehicular</option>
-                        <option>Videovigilancia</option>
-                        <option>Detección de Intrusos</option>
-                        <option>Detección de Incendios</option>
-                        <option>Extinción por Agentes Químicos</option>
-                        <option>Detección Perimetral</option>
-                        <option>Automatización de Ambientes Inteligentes</option>
-                        <option>Cableado Estructurado y Redes</option>
-                        <option>Otro / Múltiples servicios</option>
-                    </select>
-                </div>
-                <div>
-                    <label class="block text-sm font-medium text-slate-300 mb-2">Mensaje / Detalles adicionales</label>
-                    <textarea id="mensaje" rows="4" required class="w-full bg-zinc-900 border border-zinc-700 rounded-xl px-4 py-3 text-white focus:outline-none focus:border-primary transition-colors" placeholder="Cuéntanos sobre tu proyecto..."></textarea>
-                </div>
-                <button type="submit" class="w-full bg-primary hover:bg-primaryHover text-zinc-950 font-bold py-4 rounded-xl transition-all shadow-lg shadow-primary/20 flex items-center justify-center gap-2">
-                    <i class="fa-brands fa-whatsapp text-xl"></i> Enviar consulta por WhatsApp
-                </button>
-            </form>
-        </div>
-    </section>
-
-    <!-- BOTÓN FLOTANTE WHATSAPP -->
-    <a href="https://wa.me/584120000000?text=Hola,%20estoy%20interesado%20en%20los%20servicios%20de%20XONAK." target="_blank" class="fixed bottom-6 right-6 z-50 bg-emerald-500 hover:bg-emerald-600 text-white w-14 h-14 rounded-full flex items-center justify-center text-2xl shadow-2xl transition-transform hover:scale-110">
+    <a href="https://wa.me/584124744801?text=Hola%20XONAK%2C%20me%20gustar%C3%ADa%20solicitar%20informaci%C3%B3n%20sobre%20sus%20servicios." target="_blank" rel="noopener noreferrer" aria-label="Chatear por WhatsApp" class="fixed bottom-6 right-6 z-50 flex h-14 w-14 items-center justify-center rounded-full bg-emerald-500 text-2xl text-white shadow-2xl transition-transform hover:scale-110 hover:bg-emerald-600">
         <i class="fa-brands fa-whatsapp"></i>
     </a>
 
-    <!-- FOOTER -->
-    <footer class="bg-darkBg border-t border-zinc-800 py-10">
-        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 flex flex-col sm:flex-row items-center justify-between gap-4">
-            <div class="flex items-center space-x-3">
-                <i class="fa-solid fa-shield-halved text-primary text-lg"></i>
-                <span class="font-bold text-white">XO<span class="text-primary">NAK</span></span>
+    <footer class="border-t border-zinc-800 bg-darkBg py-10">
+        <div class="mx-auto flex max-w-7xl flex-col items-center justify-between gap-4 px-4 text-center sm:flex-row sm:px-6 lg:px-8">
+            <div class="flex items-center">
+                <img class="nav-brand-art" src="ref/WhatsApp%20Image%202026-10-24%20at%2020.07.40.jpeg" alt="Xonak Projects">
             </div>
             <p class="text-sm text-slate-500">&copy; 2026 XONAK. Todos los derechos reservados.</p>
         </div>
     </footer>
 
-    <!-- JAVASCRIPT -->
     <script>
-        // Menú móvil
         const menuBtn = document.getElementById('menu-btn');
         const mobileMenu = document.getElementById('mobile-menu');
 
-        menuBtn.addEventListener('click', () => {
-            mobileMenu.classList.toggle('hidden');
-        });
+        function toggleMenu() {
+            const isHidden = mobileMenu.classList.toggle('hidden');
+            menuBtn.setAttribute('aria-expanded', String(!isHidden));
+            menuBtn.setAttribute('aria-label', isHidden ? 'Abrir menú' : 'Cerrar menú');
+        }
 
-        mobileMenu.querySelectorAll('a').forEach(link => {
+        menuBtn.addEventListener('click', toggleMenu);
+
+        mobileMenu.querySelectorAll('a').forEach((link) => {
             link.addEventListener('click', () => {
                 mobileMenu.classList.add('hidden');
+                menuBtn.setAttribute('aria-expanded', 'false');
+                menuBtn.setAttribute('aria-label', 'Abrir menú');
             });
         });
 
-        // Enviar formulario conectado directamente a WhatsApp
+        document.addEventListener('keydown', (event) => {
+            if (event.key === 'Escape' && !mobileMenu.classList.contains('hidden')) {
+                mobileMenu.classList.add('hidden');
+                menuBtn.setAttribute('aria-expanded', 'false');
+                menuBtn.setAttribute('aria-label', 'Abrir menú');
+            }
+        });
+
         const contactForm = document.getElementById('contact-form');
-        contactForm.addEventListener('submit', (e) => {
-            e.preventDefault();
-            const nombre = document.getElementById('nombre').value;
-            const telefono = document.getElementById('telefono').value;
+
+        contactForm.addEventListener('submit', (event) => {
+            event.preventDefault();
+
+            const nombre = document.getElementById('nombre').value.trim();
+            const telefono = document.getElementById('telefono').value.trim();
             const servicio = document.getElementById('servicio').value;
-            const mensaje = document.getElementById('mensaje').value;
+            const mensaje = document.getElementById('mensaje').value.trim();
 
-            // Reemplaza el número de teléfono con el tuyo (con código de país, ej: 58412...)
-            const tuNumeroWhatsApp = "584120000000"; 
+            if (!nombre || !telefono || !mensaje) {
+                alert('Por favor completa tu nombre, teléfono y mensaje antes de enviar.');
+                return;
+            }
 
-            const textoUrl = `Hola XONAK, mi nombre es *${nombre}* (Tel: ${telefono}). Me interesa el servicio de *${servicio}*. Detalle: ${mensaje}`;
-            const urlWhatsApp = `https://wa.me/${tuNumeroWhatsApp}?text=${encodeURIComponent(textoUrl)}`;
-
-            window.open(urlWhatsApp, '_blank');
+            const whatsappNumber = '584124744801';
+            const texto = `Hola XONAK, mi nombre es *${nombre}* (Tel: ${telefono}). Me interesa el servicio de *${servicio}*. Detalle: ${mensaje}`;
+            const urlWhatsApp = `https://wa.me/${whatsappNumber}?text=${encodeURIComponent(texto)}`;
+            window.open(urlWhatsApp, '_blank', 'noopener,noreferrer');
+            contactForm.reset();
         });
     </script>
 </body>
